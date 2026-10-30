@@ -1,0 +1,10 @@
+{
+  "name": "genpark-context-launcher",
+  "version": "1.0.0",
+  "description": "GenPark Context Launcher - Softmax attention weight allocation, prompt cache prefix alignment, and greedy token budget packing with zero dependencies.",
+  "tools": [
+    "allocate_attention_weights_softmax",
+    "optimize_prompt_cache_prefix_alignment",
+    "pack_context_token_budget_greedy"
+  ]
+}
