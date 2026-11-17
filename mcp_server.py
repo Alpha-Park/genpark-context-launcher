@@ -8,18 +8,9 @@ import json
 from typing import Dict, Any, List
 from client import GenParkContextLauncher
 
-try:
-    from mcp.server.fastmcp import FastMCP
-    mcp = FastMCP("genpark-context-launcher")
-except ImportError:
-    class MockFastMCP:
-        def __init__(self, name):
-            self.name = name
-        def tool(self):
-            def decorator(f):
-                return f
-            return decorator
-    mcp = MockFastMCP("genpark-context-launcher")
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP('genpark-context-launcher')
 
 launcher = GenParkContextLauncher()
 
@@ -57,9 +48,7 @@ def pack_context_token_budget_greedy(
     return json.dumps(res, indent=2)
 
 def main():
-    print("Testing Context Launcher:")
-    items = [{"id": "sys", "priority_score": 5.0}, {"id": "usr", "priority_score": 2.0}]
-    print(allocate_attention_weights_softmax(items))
+    mcp.run(transport="stdio")
 
 if __name__ == "__main__":
     main()
